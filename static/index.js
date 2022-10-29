@@ -5,8 +5,11 @@ window.addEventListener("load", () => {
 function Container(wish, time, texts) {
     this.passedSeconds = 0;
     this.finalText = wish;
-    this.beginDate = time
-    this.texts = texts
+    this.beginDate = time;
+    this.texts = texts;
+
+    let opacityArr = new Array(0.1,0.25,0.5,0.75,0.9,0.95,0.75,0.5,0.25,0.1);
+    let rightArrowLoc = new Array('9px','10px','11px','10px','9px');
 
     this.renderTexts(this.texts);
     document.querySelector('.pass-time .finalText').innerHTML = this.finalText;
@@ -15,7 +18,16 @@ function Container(wish, time, texts) {
         let list = ['days', 'hours', 'minutes', 'seconds'];
 
         list.forEach(item => {
-            document.querySelector(`.pass-time .${item}`).innerText = this[item]();
+            let tempTimeValue = this[item]();
+            document.querySelector(`.pass-time .${item}`).innerText = tempTimeValue;
+            if("seconds"==`${item}`){
+                let tempTimeValueInt = parseInt(tempTimeValue, 0);
+                let opacityIndex = tempTimeValueInt%10;
+                let rightArrowElement = document.querySelector('.right-arrow');
+                rightArrowElement.style.opacity = opacityArr[opacityIndex];
+                let rightArrowIndex = tempTimeValueInt%5;
+                rightArrowElement.style.right = rightArrowLoc[rightArrowIndex];
+            }
         })
     }, 1000);
 }

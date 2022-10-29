@@ -519,3 +519,13 @@ div#content {
         opacity: 0;
     }
 }
+
+.right-arrow{
+    width:60px;
+    height:60px;
+    position: fixed;
+    z-index: 10001;
+    top:calc(40vh);
+    /*right:10px;*/
+    /*opacity:0.5;*/
+}
