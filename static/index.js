@@ -15,7 +15,7 @@ function Container(wish, time, texts) {
         let list = ['days', 'hours', 'minutes', 'seconds'];
 
         list.forEach(item => {
-            document.querySelector(`.pass-time .${item}`).innerHTML = this[item]();
+            document.querySelector(`.pass-time .${item}`).innerText = this[item]();
         })
     }, 1000);
 }
