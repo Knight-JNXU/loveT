@@ -13,18 +13,6 @@ function Container(wish, time, texts) {
 
     this.renderTexts(this.texts);
     document.querySelector('.pass-time .finalText').innerHTML = this.finalText;
-
-    function dynRightArrow(item, tempTimeValue) {
-        if ("seconds" == `${item}`) {
-            let tempTimeValueInt = parseInt(tempTimeValue, 0);
-            let opacityIndex = tempTimeValueInt % 10;
-            let rightArrowElement = document.querySelector('.right-arrow');
-            rightArrowElement.style.opacity = opacityArr[opacityIndex];
-            let rightArrowIndex = tempTimeValueInt % 5;
-            rightArrowElement.style.right = rightArrowLoc[rightArrowIndex];
-        }
-    }
-
     setInterval(() => {
         this.passedSeconds = Math.ceil((+ new Date() - new Date(this.beginDate).getTime()) / 1000);
         let list = ['days', 'hours', 'minutes', 'seconds'];
@@ -32,7 +20,14 @@ function Container(wish, time, texts) {
         list.forEach(item => {
             let tempTimeValue = this[item]();
             document.querySelector(`.pass-time .${item}`).innerText = tempTimeValue;
-            dynRightArrow(item, tempTimeValue);
+            if("seconds"==`${item}`){
+                let tempTimeValueInt = parseInt(tempTimeValue, 0);
+                let opacityIndex = tempTimeValueInt%10;
+                let rightArrowElement = document.querySelector('.right-arrow');
+                rightArrowElement.style.opacity = opacityArr[opacityIndex];
+                let rightArrowIndex = tempTimeValueInt%5;
+                rightArrowElement.style.right = rightArrowLoc[rightArrowIndex];
+            }
         })
     }, 1000);
 }
