@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>videos</title>
+    <style media="screen">
+    body *{
+      font-size: 14px;
+    }
+    #video {
+      background: #000;
+    }
+    #controlWrap{
+      width:640px;
+    }
+    #progressWrap{
+      background-color: #ccc;
+      height: 2px;
+      cursor: pointer;
+      margin-bottom: 5px;
+    }
+    #progressWrap:hover{
+      height: 5px;
+    }
+    #playProgress{
+      background-color: #000;
+      width: 0px;
+      height: 100%;
+    }
+    </style>
+  </head>
+  <body>
+    <p id="load_state"></p>
+    <video id="video" preloader poster="static/show.jpg" height="480" width="640">
+      <source src="../videos/CastleInTheSky.mp4" type="video/mp4">
+    </video>
+    <div id="controlWrap">
+      <div id="progressWrap">
+        <div id="playProgress">
+        </div>
+      </div>
+      <button id="play_btn" type="button" name="button"></button>
+      <font id="now_time" size="3"></font>/
+      <font id="duration" size="3"></font>
+      音量<button id="vol_inc_btn" type="button">+</button>
+      <button id="vol_dec_btn" type="button">-</button>
+      <button id="muted_btn" type="button">静音</button>
+      <button id="speed_up" type="button">快进</button>
+      <button id="back" type="button">快退</button>
+      <button id="fullscreen" type="button">全屏</button>
+    </div>
+
+  </body>
+  <script src='static/play.js'></script>
+</html>
